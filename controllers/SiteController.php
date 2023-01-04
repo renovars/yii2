@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Comments;
+use app\models\Profile;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -117,12 +119,30 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Displays comments page.
      *
      * @return string
      */
-    public function actionAbout()
+
+    public function actionComments()
     {
-        return $this->render('about');
+        $comments = Comments::find()
+            ->where(['like', 'text', 'nigger'])
+            ->all();
+
+        $userComments = Comments::findAll(['author_id' => 3]);
+
+        $slavaUkraine = Comments::find()
+            ->select('author_id')
+            ->where(['like', 'text', 'Слава Украине'])
+            ->one();
+
+        $penisSize = Profile::findOne($slavaUkraine);
+
+        return $this->render('comments', [
+            'comments'     => $comments,
+            'userComments' => $userComments,
+            'penisSize' => $penisSize,
+        ]);
     }
 }
