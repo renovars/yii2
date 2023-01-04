@@ -137,7 +137,7 @@ class SiteController extends Controller
             ->where(['like', 'text', 'Слава Украине'])
             ->one();
 
-        $penisSize = Profile::findOne($slavaUkraine);
+        $penisSize = $slavaUkraine->profile->penis_size;
 
         return $this->render('comments', [
             'comments'     => $comments,

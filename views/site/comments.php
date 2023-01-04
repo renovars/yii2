@@ -20,6 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>Slava Ukraine comment author penis size</p>
 
-    <pre><?php echo $penisSize->penis_size ?></pre>
+    <pre><?php echo $penisSize ?></pre>
 
 </div>
