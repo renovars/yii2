@@ -6,8 +6,8 @@ use yii\db\ActiveQuery;
 
 class Profile extends \yii\db\ActiveRecord
 {
-    public function getUsers() : ActiveQuery
+    public function getUser() : ActiveQuery
     {
-        return $this->hasOne(Users::class, ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

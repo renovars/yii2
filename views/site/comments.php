@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Comments';
+$this->title = 'Comment';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-comments">

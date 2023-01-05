@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Comments;
+use app\models\Comment;
 use app\models\Profile;
-use app\models\Users;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -127,19 +127,19 @@ class SiteController extends Controller
 
     public function actionComments()
     {
-        $comments = Comments::find()
+        $comments = Comment::find()
             ->where(['like', 'text', 'nigger'])
             ->all();
 
-        $user = Users::findOne(3);
+        $user = User::findOne(3);
         $userComments = $user->comments;
 
-        $slavaUkraine = Comments::find()
+        $slavaUkraine = Comment::find()
             ->select('author_id')
             ->where(['like', 'text', 'Слава Украине'])
             ->one();
 
-        $penisSize = $slavaUkraine->users->profile->penis_size;
+        $penisSize = $slavaUkraine->user->profile->penis_size;
 
         return $this->render('comments', [
             'comments'     => $comments,
