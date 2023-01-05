@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Comments;
 use app\models\Profile;
+use app\models\Users;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -130,14 +131,15 @@ class SiteController extends Controller
             ->where(['like', 'text', 'nigger'])
             ->all();
 
-        $userComments = Comments::findAll(['author_id' => 3]);
+        $user = Users::findOne(3);
+        $userComments = $user->comments;
 
         $slavaUkraine = Comments::find()
             ->select('author_id')
             ->where(['like', 'text', 'Слава Украине'])
             ->one();
 
-        $penisSize = $slavaUkraine->profile->penis_size;
+        $penisSize = $slavaUkraine->users->profile->penis_size;
 
         return $this->render('comments', [
             'comments'     => $comments,
